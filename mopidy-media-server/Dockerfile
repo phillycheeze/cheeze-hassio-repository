@@ -4,6 +4,7 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 ENV SNAPCAST_VERSION 0.25.0
+ENV ENV_BUILD_ARCH=$BUILD_ARCH
 
 # Everything required for Mopidy and extensions
 RUN set -ex \
@@ -12,11 +13,10 @@ RUN set -ex \
         build-essential \
         curl \
         gcc \
-        gnupg \
         gstreamer1.0-alsa \
-        gstreamer1.0-fluendo-mp3 \
         gstreamer1.0-libav \
         gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-ugly \
         libxml2-dev \
         libxslt-dev \
         libz-dev \
@@ -34,11 +34,12 @@ RUN set -ex \
         mopidy-spotify \
     && pip3 install -U six oauth2client pyasn1 \
     && pip3 install \
-        Mopidy-Iris \
-    && apt-get update \
+        Mopidy-Iris 
+
+# Snapcast stuff
+RUN set -ex \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        git libasound2-dev libvorbisidec-dev libvorbis-dev libflac-dev alsa-utils libavahi-client-dev avahi-daemon \
-        build-essential dh-systemd quilt fakeroot lintian \
+        libasound2-dev libvorbisidec-dev libvorbis-dev libflac-dev alsa-utils libavahi-client-dev avahi-daemon fakeroot \
     && cd /tmp/ \
     && curl -L https://github.com/badaix/snapcast/releases/download/v${SNAPCAST_VERSION}/snapserver_${SNAPCAST_VERSION}-1_${BUILD_ARCH}.deb -o snapserver.deb \
     && DEBIAN_FRONTEND=noninteractive apt install -y snapserver.deb \
