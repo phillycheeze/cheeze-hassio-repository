@@ -27,7 +27,7 @@ RUN set -ex \
     && curl -L https://apt.mopidy.com/mopidy.gpg -o /tmp/mopidy.gpg \
     && curl -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list \
     && apt-key add /tmp/mopidy.gpg \
-    && apt-get update
+    && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         mopidy \
         mopidy-mpd \
