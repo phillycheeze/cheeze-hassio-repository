@@ -1,25 +1,16 @@
 {
-    "name": "Mopidy",
-    "version": "0.1.0",
-    "slug": "mopidy-kloving",
-    "description": "Mopidy music server",
+    "name": "Mopidy Media Server",
+    "version": "0.2.0",
+    "slug": "mopidy-media-server",
+    "description": "Mopidy music server with additional utilities",
     "startup": "application",
     "boot": "auto",
-    "image": "kloving/mopidy-{arch}",
+    "arch": ["armhf"],
     "audio": true,
-    "options": {
-       "local_scan": true,
-       "certfile": "ca_bundle.crt",
-       "options": []},
-    "schema": {
-	"local_scan": "bool?",
-        "certfile": "str",
-	"options": [{"name": "str", "value": "str"}]
-    },
-    "devices": ["/dev/snd:/dev/snd:rwm"],
-    "ports": {"6680/tcp": 6680, "6600/tcp": 6600},
-    "map": ["share","ssl"],
+    "options": {},
+    "schema": {},
+    "ports": {"6680/tcp": 6680, "6600/tcp": 6600, "1704/tcp": 1704, "1705/tcp": 1705},
     "webui": "http://[HOST]:[PORT:6680]",
     "host_ipc": true,
-    "arch": ["armv7", "armhf", "amd64", "aarch64", "i386"]
+    "tmpfs": "size=10m,rw" // The /tmp directory will use tmpfs memory instead of disk, this is important for snapserver especially on raspberrypis
 }
