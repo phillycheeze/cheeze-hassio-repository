@@ -1,6 +1,6 @@
 {
     "name": "Mopidy Media Server",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "slug": "mopidy-media-server",
     "description": "Mopidy music server with additional utilities",
     "startup": "application",
