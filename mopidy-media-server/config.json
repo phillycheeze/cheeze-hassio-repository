@@ -12,5 +12,5 @@
     "ports": {"6680/tcp": 6680, "6600/tcp": 6600, "1704/tcp": 1704, "1705/tcp": 1705},
     "webui": "http://[HOST]:[PORT:6680]",
     "host_ipc": true,
-    "tmpfs": "size=10m,rw" // The /tmp directory will use tmpfs memory instead of disk, this is important for snapserver especially on raspberrypis
+    "tmpfs": "size=10m,rw"
 }
