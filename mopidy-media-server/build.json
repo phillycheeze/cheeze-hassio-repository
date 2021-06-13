@@ -1,5 +1,5 @@
 {
   "build_from": {
-    "armhf": "homeassisant/armhf-base-debian"
+    "armhf": "homeassistant/armhf-base-debian"
   }
 }
