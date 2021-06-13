@@ -34,7 +34,7 @@ RUN set -ex \
         mopidy-spotify \
     && pip3 install -U six oauth2client pyasn1 \
     && pip3 install \
-        Mopidy-Iris
+        Mopidy-Iris \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         git libasound2-dev libvorbisidec-dev libvorbis-dev libflac-dev alsa-utils libavahi-client-dev avahi-daemon \
